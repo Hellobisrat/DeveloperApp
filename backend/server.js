@@ -4,8 +4,10 @@ import dbConnect from './config/db.js';
 import dotenv from 'dotenv'
 dotenv.config();
 
+import router from './router/devrouter.js';
 
-const PORT = process.env.PORT || 9000;
+
+const PORT = process.env.PORT || 9000
 
 
 
@@ -16,6 +18,7 @@ const app = express();
 //middleware
 app.use(express.json())
 app.use(cors())
+app.use('/api',router)
 
 // test route
 app.get('/',(req,res)=>{

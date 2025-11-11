@@ -33,7 +33,7 @@ export const getDevelopers = async(req,res)=>{
 export const updateDeveloper = async(req,res)=>{
   try {
     const {id}=req.params
-    const developer = await Developer.findById({id})
+    const developer = await Developer.findById(id)
     if(!developer){res.status(300).json('no developer found by given id')}
     developer.name=req.body.name|| developer.name
     developer.lastName=req.body.lastName || developer.lastName,
@@ -42,22 +42,22 @@ export const updateDeveloper = async(req,res)=>{
       const hashPassword = await bcrypt.hash(req.body.password,10)
       developer.password = hashPassword
     }
-    const updatedDeveloper = await developer.save()
-    const {password,...safeDate}= updatedDeveloper
-    res.status(200).json({message:"developer updated",safeDate})
+    const EditedDeveloper = await developer.save()
+   
+    res.status(200).json({message:"developer updated",EditedDeveloper})
   } catch (error) {
     res.status(500).json(error.message)
   }
 }
 
-const deleteDeveloper = async(req,res)=>{
+export const deleteDeveloper = async(req,res)=>{
   try {
     const {id} = req.params;
-    const developer = await Developer.findById({id});
+    const developer = await Developer.findById(id);
     if(!developer ){
       return res.status(300).json('no developer found with given id')
     } 
-    await Developer.findOneAndDelete({developer})
+    await Developer.findOneAndDelete(developer)
     res.status(200).json({message:'successfully deleted'})
   } catch (error) {
     res.status(500).json(error.message)

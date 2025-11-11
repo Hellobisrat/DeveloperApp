@@ -22,7 +22,7 @@ const developerSchema = new Schema({
   },
   role:{
     type:[String],
-    enum:['developer','lead developer','senior developer'],
+    enum:['developer','leadDeveloper','seniorDeveloper'],
     required:true
   }
 })
