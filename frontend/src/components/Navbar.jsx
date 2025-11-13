@@ -1,5 +1,5 @@
 import React from 'react'
-import { useNavigate } from 'react-router-dom'
+
 import { Code ,Settings} from 'lucide-react'
 
 const Navbar = () => {
