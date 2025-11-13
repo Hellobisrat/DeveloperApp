@@ -17,7 +17,7 @@ const Home = () => {
     try {
       const res = await axios.get('http://localhost:9000/api/developers/');
       setDevelopers(res.data || res.data.data || []);
-      toast.success('Successfully fetched developers');
+      
     } catch (error) {
       console.log(error.message)
       toast.error('Error fetching developers');
