@@ -3,24 +3,30 @@ import { Edit2, List, Trash2, MoreVertical, X, Star, TrendingUpIcon } from "luci
 import { toast } from "react-toastify";
 import { Link, useNavigate } from "react-router-dom";
 import developerService from "../services/developerService";
+import DeveloperCardSkeleton from "../components/ui/DeveloperCardSkeleton";
+import SidebarSkeleton from "../components/ui/SidebarSkeleton";
 
 const Home = () => {
+  const [loading, setLoading] = useState(true);
   const [developers, setDevelopers] = useState([]);
   const [editId, setEditId] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const fetchDevelopers = async () => {
-      try {
-        const data = await developerService.getDevelopers();
-        setDevelopers(data || []);
-      } catch (error) {
-        toast.error("Error fetching developers");
-      }
-    };
+  const fetchDevelopers = async () => {
+    try {
+      const data = await developerService.getDevelopers();
+      setDevelopers(data || []);
+    } catch (error) {
+      toast.error("Error fetching developers");
+    } finally {
+      setLoading(false);
+    }
+  };
 
-    fetchDevelopers();
-  }, []);
+  fetchDevelopers();
+}, []);
+
 
   const SeniorDevelopers = useMemo(() => {
     return developers.filter(
@@ -63,6 +69,21 @@ const Home = () => {
       toast.error("Error while deleting");
     }
   };
+    if (loading) {
+  return (
+    <div className="w-full h-screen ml-64 grid grid-cols-3 gap-3 overflow-y-auto">
+      <div className="col-span-2 m-3">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 m-6">
+          {[1, 2, 3, 4].map((i) => (
+            <DeveloperCardSkeleton key={i} />
+          ))}
+        </div>
+      </div>
+
+      <SidebarSkeleton />
+    </div>
+  );
+}
 
   return (
     <div className="w-full h-screen ml-64 grid grid-cols-3 gap-3 overflow-y-auto">
