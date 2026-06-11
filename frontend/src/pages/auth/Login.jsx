@@ -1,16 +1,30 @@
-import { useState } from "react";
-
+import { useState,useContext } from "react";
+import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
+import { AuthContext } from "../../context/AuthContext";
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Login data:", form);
-    // later: call backend API
+
+    try {
+      const data = await authService.login(form.email, form.password);
+
+      // Save user + token
+      login(data.user);
+      localStorage.setItem("token", data.token);
+
+      navigate("/");
+    } catch (err) {
+      console.error(err);
+      alert("Invalid email or password");
+    }
   };
 
   return (

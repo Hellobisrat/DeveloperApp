@@ -1,20 +1,28 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
+import authService from "../../services/authService";
 export default function Register() {
   const [form, setForm] = useState({
     name: "",
     email: "",
     password: "",
   });
+   const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Register data:", form);
-    // later: call backend API
+
+    try {
+      await authService.register(form.name, form.email, form.password);
+      navigate("/login");
+    } catch (err) {
+      console.error(err);
+      alert("Registration failed");
+    }
   };
 
   return (
