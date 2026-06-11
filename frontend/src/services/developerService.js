@@ -10,9 +10,16 @@ const deleteDeveloper = async (id) => {
   return res.data;
 };
 
+
+
+const createDeveloper = async (data) => {
+  const res = await api.post("/developers", data);
+  return res.data;
+};
 const developerService = {
   getDevelopers,
   deleteDeveloper,
+  createDeveloper
 };
 
 export default developerService;
