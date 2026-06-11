@@ -16,10 +16,17 @@ const createDeveloper = async (data) => {
   const res = await api.post("/developers", data);
   return res.data;
 };
+
+const updateDeveloper = async (id, data) => {
+  const res = await api.put(`/developers/${id}`, data);
+  return res.data;
+};
+
 const developerService = {
   getDevelopers,
   deleteDeveloper,
-  createDeveloper
+  createDeveloper,
+  updateDeveloper
 };
 
 export default developerService;
