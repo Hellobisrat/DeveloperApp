@@ -19,7 +19,7 @@ const Edit = () => {
   useEffect(()=>{
     const fetchData = async()=>{
       
-      const res = await axios.get(`http://localhost:9000/api/developers/${id}`)
+      const res = await axios.get(`http://localhost:6000/api/developers/${id}`)
       if(!res){
         return toast.error('something went wrong')
       }

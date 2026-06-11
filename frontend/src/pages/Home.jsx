@@ -15,7 +15,7 @@ const Home = () => {
   useEffect(()=>{
    const fetchDevelopers = async () => {
     try {
-      const res = await axios.get('http://localhost:9000/api/developers/');
+      const res = await axios.get('http://localhost:6000/api/developers/');
       setDevelopers(res.data || res.data.data || []);
       
     } catch (error) {

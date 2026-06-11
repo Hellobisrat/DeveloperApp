@@ -17,7 +17,7 @@ const Post = () => {
   const handleSubmit=async(e)=>{
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:9000/api/developers/',formData)
+      const res = await axios.post('http://localhost:6000/api/developers/',formData)
       if(!res){
         toast.error('Failed to post')
       }

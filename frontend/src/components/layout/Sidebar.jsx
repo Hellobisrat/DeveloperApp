@@ -15,7 +15,7 @@ const Sidebar = () => {
          <Link className=' m-12  p-6  max-w-[170px] w-full  rounded-lg border-2
           border-purple-200 shadow-md md:flex items-center
            gap-4 justify-center mx-auto flex-col'to='/post' >
-          <Link className='text-gray-600 text-sm' >Post</Link>
+          <div className='text-gray-600 text-sm' >Post</div>
           <FileText className='w-5 h-5 text-purple-400'/>
 
         </Link>

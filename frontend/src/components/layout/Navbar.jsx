@@ -15,6 +15,7 @@ const Navbar = () => {
           </div>
           <span className='text-2xl font-extrabold text-purple-500 tracking-wide'>
             Let'see Our Coders
+            
           </span>
         </div>
         <div className='flex items-center gap-4'>
