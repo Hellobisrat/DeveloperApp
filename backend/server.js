@@ -21,8 +21,7 @@ app.use(express.json())
 
 app.use(cors({
   origin: [
-    "http://localhost:3000",
-    "https://precious-lily-1fb884.netlify.app"
+    "http://localhost:3000"
   ],
   credentials: true,
   allowedHeaders: ["Content-Type", "Authorization"]
