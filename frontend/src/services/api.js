@@ -1,11 +1,11 @@
 import axios from "axios";
 
 const api = axios.create({
-  baseURL: "https://your-backend.onrender.com",// your backend URL
-  withCredentials: true, // allows cookies if you use them
+  baseURL: "https://your-backend.onrender.com",
+  withCredentials: true,
 });
 
-// Add token to every request
+// Attach token to every request
 api.interceptors.request.use((config) => {
   const token = localStorage.getItem("token");
   if (token) {
