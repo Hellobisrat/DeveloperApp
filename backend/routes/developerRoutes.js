@@ -6,14 +6,14 @@ import {
   updateDeveloper,
   deleteDeveloper
 } from "../controllers/devcontroller.js";
-import { protect } from "../middleware/authMiddleware.js";
+import { protect ,adminOnly} from "../middleware/authMiddleware.js";
 
 const router = express.Router();
 
 // GET all developers + POST new developer
 router.route("/")
   .get(protect, getDevelopers)
-  .post(protect, postDeveloper);
+  .post(protect,adminOnly, postDeveloper);
 
 // GET, UPDATE, DELETE developer by ID
 router.route("/:id")

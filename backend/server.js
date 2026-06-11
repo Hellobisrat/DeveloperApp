@@ -18,10 +18,11 @@ const app = express();
 //middleware
 app.use(express.json())
 app.use(cors({
-  origin: "http://localhost:3000",
-  credentials: true,
-  allowedHeaders: ["Content-Type", "Authorization"]
+  origin: "https://precious-lily-1fb884.netlify.app",
+  credentials: true
 }));
+
+
 
 app.use("/api/auth", authRoutes);
 app.use("/api/developers", developerRoutes);
