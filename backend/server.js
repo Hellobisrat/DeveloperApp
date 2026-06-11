@@ -1,10 +1,10 @@
 import express from 'express'
 import cors from 'cors'
-import dbConnect from 
 import dotenv from 'dotenv'
 dotenv.config();
-
-import router from './router/devrouter.js';
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoutes.js";
+import developerRoutes from "./routes/developerRoutes.js";
 
 
 const PORT = process.env.PORT || 9000
@@ -18,7 +18,8 @@ const app = express();
 //middleware
 app.use(express.json())
 app.use(cors())
-app.use('/api',router)
+app.use("/api/auth", authRoutes);
+app.use("/api/developers", developerRoutes);
 
 // test route
 app.get('/',(req,res)=>{
@@ -26,7 +27,7 @@ app.get('/',(req,res)=>{
 })
 
 // db connect
-dbConnect();
+connectDB();
 
 app.listen(PORT,()=>{
 console.log(`app start listening at http://localhost:${PORT}`)
