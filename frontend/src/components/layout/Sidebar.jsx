@@ -6,37 +6,69 @@ const Sidebar = () => {
   const menuItems = [
     {
       name: "Home",
-      icon: <Home className="w-5 h-5 text-purple-400" />,
+      icon: Home,
       path: "/",
     },
     {
       name: "Post",
-      icon: <FileText className="w-5 h-5 text-purple-400" />,
+      icon: FileText,
       path: "/post",
     },
   ];
 
   return (
-    <div className="md:block fixed w-20 h-full lg:w-64 bg-white/90 border-r border-purple-100 backdrop-blur-sm shadow-sm z-20 transition-all duration-300">
-      <div className="flex flex-col pt-10">
-        {menuItems.map((item) => (
+    <div className="
+      group fixed left-0 top-0 h-full 
+      w-40 hover:w-64 
+      bg-white/90 backdrop-blur-md 
+      border-r border-purple-100 shadow-lg 
+      transition-all duration-300 z-20
+      flex flex-col py-40
+    ">
+      {menuItems.map((item) => {
+        const Icon = item.icon;
+
+        return (
           <NavLink
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              `m-6 p-6 max-w-[170px] w-full rounded-lg border-2 shadow-md mx-auto flex flex-col items-center gap-4 justify-center transition-all duration-300
-              ${
-                isActive
-                  ? "border-purple-400 bg-purple-50 shadow-purple-200"
-                  : "border-purple-200 hover:border-purple-300 hover:bg-purple-50"
-              }`
+              `
+              relative flex items-center gap-4 
+              px-4 py-3 mx-3 my-2 rounded-lg 
+              transition-all duration-300 cursor-pointer
+
+              ${isActive 
+                ? "bg-purple-100 text-purple-600 shadow-md" 
+                : "text-gray-600 hover:bg-purple-50 hover:text-purple-500"}
+              `
             }
           >
-            <div className="text-gray-600 text-sm">{item.name}</div>
-            {item.icon}
+            {/* Active indicator bar */}
+            <div
+              className={({ isActive }) =>
+                isActive
+                  ? "absolute left-0 top-0 h-full w-1 bg-purple-500 rounded-r-lg"
+                  : ""
+              }
+            />
+
+            {/* Icon */}
+            <Icon className="w-6 h-6 text-purple-500" />
+
+            {/* Label (hidden until hover) */}
+            <span
+              className="
+                text-sm font-medium 
+                opacity-0 group-hover:opacity-100 
+                transition-all duration-300
+              "
+            >
+              {item.name}
+            </span>
           </NavLink>
-        ))}
-      </div>
+        );
+      })}
     </div>
   );
 };
