@@ -86,8 +86,8 @@ const Home = () => {
 }
 
   return (
-    <div className="w-full h-screen ml-64 grid grid-cols-3 gap-3 overflow-y-auto">
-      <div className="col-span-2 border border-l border-purple-100 rounded-lg shadow-lg m-3">
+    <div className="w-full h-screen ml-64 grid grid-cols-6 gap-3 overflow-y-auto">
+      <div className="col-span-4 border border-l border-purple-100 rounded-lg shadow-lg m-3">
         <div className="max-w-full flex items-center justify-center border-none rounded-lg mt-6 md:mt-12 gap-8 hover:border hover:border-purple-200">
           <List className="w-7 h-7 text-gray-600 hover:text-purple-400" />
           <span className="text-2xl font-extrabold text-purple-500 tracking-wide">
@@ -168,7 +168,7 @@ const Home = () => {
       </div>
 
       {/* RIGHT SIDEBAR */}
-      <div className="hidden lg:block md:col-span-1 border border-l border-purple-100 rounded-lg shadow-lg bg-white m-3">
+      <div className="hidden lg:block md:col-span-2 border border-l border-purple-100 rounded-lg shadow-lg bg-white m-3">
         <div className="flex flex-col items-center mt-12 space-y-4 max-w-md">
           <div className="border border-purple-100 shadow-md p-6">
             <span className="font-semibold text-lg text-purple-500">
