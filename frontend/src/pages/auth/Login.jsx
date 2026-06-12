@@ -35,11 +35,11 @@ export default function Login() {
   };
 
   return (
-    <div className="flex h-screen">
+    <div className="flex h-screen ">
       {/* Left side -form */}
-      <div className="flex flex-1 justify-center items-center bg-gray-50 ">
+      <div className="flex flex-[1] justify-center items-center bg-gray-50 ">
         <Card className="w-[420px] p-8 rounded-2xl shadow-2xl
- flex flex-col  justify-center ">
+           flex flex-col  justify-center ">
         <CardHeader>
           <CardTitle className="text-center text-3xl font-bold">
             Sign In
@@ -98,8 +98,8 @@ export default function Login() {
         </CardFooter>
       </Card>
       </div>
-      <div className="hidden lg:flex flex-1 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900
- text-white flex-col justify-center m-10 px-10 rounded-lg">
+      <div className="hidden lg:flex flex-[1] bg-slate-600
+  flex-col justify-center m-10 px-10 rounded-l-[120px] bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] bg-repeat opacity-95">
         <h1 className="text-4xl font-bold mb-4">Welcome to WebDeveloper</h1>
         <p className="text-gray-300 text-lg leading-relaxed">
           This page helps developers build organized and well‑coded dashboards full
