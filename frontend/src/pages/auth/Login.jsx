@@ -1,11 +1,18 @@
+import { Card, CardHeader, CardTitle, CardContent, CardFooter } from "../../components/ui/card"
 import { useState,useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import authService from "../../services/authService";
 import { AuthContext } from "../../context/AuthContext";
+import { Button } from "../../components/ui/button"
+import { Input } from "../../components/ui/input"
+import {toast} from 'react-toastify'
+import { Mail, Lock } from "lucide-react";
+
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
@@ -23,49 +30,57 @@ export default function Login() {
       navigate("/");
     } catch (err) {
       console.error(err);
-      alert("Invalid email or password");
+      toast.error("Invalid email or password");
     }
   };
 
   return (
-    <div className="flex justify-center items-center h-screen bg-gray-100">
-      <form
-        onSubmit={handleSubmit}
-        className="bg-white p-8 rounded shadow-md w-96"
-      >
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="flex justify-center items-center h-screen bg-gray-50">
+      <Card className="w-[380px] shadow-lg">
+        <CardHeader>
+          <CardTitle className="text-center text-2xl font-semibold">
+            Welcome Back
+          </CardTitle>
+        </CardHeader>
+        <CardContent>
+          <form onSubmit={handleSubmit} className="space-y-4">
+            <div className="relative">
+              <Mail className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <Input
+                type="email"
+                name="email"
+                placeholder="Email"
+                className="pl-10"
+                onChange={handleChange}
+              />
+            </div>
 
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          className="w-full p-2 border rounded mb-4"
-          onChange={handleChange}
-        />
+            <div className="relative">
+              <Lock className="absolute left-3 top-3 h-5 w-5 text-gray-400" />
+              <Input
+                type="password"
+                name="password"
+                placeholder="Password"
+                className="pl-10"
+                onChange={handleChange}
+              />
+            </div>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          className="w-full p-2 border rounded mb-4"
-          onChange={handleChange}
-        />
+            <Button type="submit" className="w-full">
+              Login
+            </Button>
+          </form>
 
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded hover:bg-blue-700"
-        >
-          Login
-        </button>
-
-        <p className="text-sm text-center mt-4">
+        
+      
+        </CardContent>
+        <CardFooter className="flex flex-col gap-2 text-sm text-center">
+    
           <a href="/register" className="text-blue-600">Create an account</a>
-        </p>
-
-        <p className="text-sm text-center mt-2">
+  
           <a href="/forgot-password" className="text-blue-600">Forgot password</a>
-        </p>
-      </form>
+        </CardFooter>
+      </Card>
     </div>
   );
 }
