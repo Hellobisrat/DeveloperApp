@@ -9,10 +9,12 @@ import {
   Users,
   ChevronDown,
 } from "lucide-react";
-import { useState } from "react";
+import { useState,useContext } from "react";
+import { AuthContext } from "../../context/AuthContext";
 
 export default function Sidebar() {
   const [showSubmenu,setShowSubmenu]= useState(false)
+  const { user } = useContext(AuthContext);
   const menu = [
     {
       section: "General",
@@ -55,13 +57,13 @@ export default function Sidebar() {
 
   return (
     <div className="
-      fixed left-0 top-0 h-full w-64 mt-20
+      fixed left-0 top-0 h-full w-64 
       bg-white border-r border-purple-100 shadow-md 
       flex flex-col
     ">
       
       {/* SCROLLABLE MENU */}
-      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
+      <div className="flex-1 overflow-y-auto px-4 py-4 space-y-6">
         {menu.map((group) => (
           <div key={group.section}>
             <p className="text-xs font-semibold text-gray-400 uppercase px-2 mb-2">
@@ -140,12 +142,14 @@ export default function Sidebar() {
       </div>
 
       {/* FIXED PROFILE SECTION */}
-      <div className="border-t border-purple-100 p-2">
+      <div className="border-t border-purple-100 p-4">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-full bg-purple-300"></div>
+          <div className="w-10 h-10 rounded-full bg-purple-300 flex items-center justify-center">
+            {user.name.charAt(0).toUpperCase()}
+          </div>
           <div>
-            <p className="text-sm font-semibold text-gray-700">Tomas Taddese</p>
-            <p className="text-xs text-gray-400">Administrator</p>
+            <p className="text-sm font-semibold text-gray-700">{user.name}</p>
+            <p className="text-xs text-gray-400">{user.role}</p>
           </div>
         </div>
       </div>
