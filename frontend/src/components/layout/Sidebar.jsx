@@ -9,8 +9,10 @@ import {
   Users,
   ChevronDown,
 } from "lucide-react";
+import { useState } from "react";
 
 export default function Sidebar() {
+  const [showSubmenu,setShowSubmenu]= useState(false)
   const menu = [
     {
       section: "General",
@@ -50,17 +52,16 @@ export default function Sidebar() {
     },
   ];
 
-  return (
-   <div className="
-  fixed left-0 top-0 h-full w-64 
-  bg-white border-r border-purple-100 shadow-md 
-  flex flex-col justify-between 
-  px-4 py-6 
-  overflow-y-auto
-">
 
-      {/* MENU */}
-      <div className="space-y-6">
+  return (
+    <div className="
+      fixed left-0 top-0 h-full w-64 mt-20
+      bg-white border-r border-purple-100 shadow-md 
+      flex flex-col
+    ">
+      
+      {/* SCROLLABLE MENU */}
+      <div className="flex-1 overflow-y-auto px-4 py-6 space-y-4">
         {menu.map((group) => (
           <div key={group.section}>
             <p className="text-xs font-semibold text-gray-400 uppercase px-2 mb-2">
@@ -70,7 +71,7 @@ export default function Sidebar() {
             <div className="space-y-1">
               {group.items.map((item) => (
                 <div key={item.name}>
-                  {/* Main Item */}
+                  
                   <NavLink
                     to={item.path || "#"}
                     className={({ isActive }) =>
@@ -90,21 +91,26 @@ export default function Sidebar() {
                       <span className="text-sm font-medium">{item.name}</span>
                     </div>
 
-                    {/* Badge */}
                     {item.badge && (
                       <span className="text-xs bg-red-500 text-white px-2 py-0.5 rounded-full">
                         {item.badge}
                       </span>
                     )}
 
-                    {/* Submenu arrow */}
                     {item.submenu && (
-                      <ChevronDown className="w-4 h-4 text-gray-500" />
+                      <ChevronDown
+                        className={`w-4 h-4 text-gray-500 transition ${
+                          showSubmenu ? "rotate-180" : ""
+                        }`}
+                        onClick={(e) => {
+                          e.preventDefault();
+                          setShowSubmenu(prev => !prev);
+                        }}
+                      />
                     )}
                   </NavLink>
 
-                  {/* Submenu */}
-                  {item.submenu && (
+                  {showSubmenu && item.submenu && (
                     <div className="ml-10 mt-1 space-y-1">
                       {item.submenu.map((sub) => (
                         <NavLink
@@ -133,8 +139,8 @@ export default function Sidebar() {
         ))}
       </div>
 
-      {/* USER PROFILE */}
-      <div className="border-t border-purple-100 pt-4 px-3">
+      {/* FIXED PROFILE SECTION */}
+      <div className="border-t border-purple-100 p-2">
         <div className="flex items-center gap-3">
           <div className="w-10 h-10 rounded-full bg-purple-300"></div>
           <div>
