@@ -1,3 +1,4 @@
+import Footer from "./Footer";
 import Navbar from "./Navbar";
 import Sidebar from "./Sidebar";
 import { Outlet } from "react-router-dom";
@@ -20,9 +21,7 @@ export default function Layout() {
       </div>
 
       {/* Footer */}
-      <footer className="w-full py-4 text-center text-xs text-gray-500 border-t border-purple-100">
-        © {new Date().getFullYear()} WebDeveloper — Crafted with passion.
-      </footer>
+     <Footer/>
     </div>
   );
 }
