@@ -57,9 +57,9 @@ export default function Sidebar() {
 
   return (
     <div className="
-      fixed left-0 top-0 h-full w-64 
+      fixed left-0 top-0 h-full w-40 hover:w-64
       bg-white border-r border-purple-100 shadow-md 
-      flex flex-col
+      flex flex-col 
     ">
       
       {/* SCROLLABLE MENU */}
@@ -89,7 +89,7 @@ export default function Sidebar() {
                     }
                   >
                     <div className="flex items-center gap-3">
-                      <item.icon className="w-5 h-5 text-purple-500" />
+                      <item.icon className="w-5 h-5 text-purple-500 hidden hover:block" />
                       <span className="text-sm font-medium">{item.name}</span>
                     </div>
 

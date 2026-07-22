@@ -8,6 +8,8 @@ const Navbar = () => {
   const navigate = useNavigate();
   const [openMenu, setOpenMenu] = useState(false);
 
+
+
   const handleLogout = () => {
     logout();
     localStorage.removeItem("token");
@@ -41,6 +43,18 @@ const Navbar = () => {
             <Settings className="w-5 h-5" />
           </button>
 
+
+          {user?.role === "admin" && (
+                    <button
+                    onClick={() => navigate("/post")}
+                    className="w-full flex items-center gap-2 px-4 py-2 text-purple-600 hover:bg-purple-50 transition"
+                  >
+                    <Code className="w-4 h-4" />
+                    PostDev
+                  </button>
+                )}
+
+
           {/* Avatar + Dropdown */}
           <div className="relative">
             <div
@@ -51,6 +65,8 @@ const Navbar = () => {
             >
               {user?.name?.charAt(0).toUpperCase() || "U"}
             </div>
+
+             
 
             {/* Online indicator */}
             <div
@@ -66,7 +82,7 @@ const Navbar = () => {
                 <p className="px-4 py-2 text-gray-700 font-medium border-b">
                   {user?.name || "User"}
                 </p>
-
+                
                 <button
                   onClick={handleLogout}
                   className="w-full flex items-center gap-2 px-4 py-2 text-red-600 hover:bg-red-50 transition"

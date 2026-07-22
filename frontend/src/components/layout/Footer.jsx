@@ -2,8 +2,8 @@ import { Github, Linkedin, Twitter } from 'lucide-react'
 
 const Footer = () => {
   return (
-    <div className='w-full py-6 bg-slate-300 border-t border-purple-200'>
-      <div className='flex flex-col items-center gap-3'>
+    <div className=' w-full py-4 bg-slate-50 border-t border-purple-200 '>
+      <div className='flex  items-center justify-around'>
         <p className="text-sm text-gray-600">
           © {new Date().getFullYear()} WebDeveloper — Crafted with passion.
         </p>

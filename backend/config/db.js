@@ -1,18 +1,19 @@
 import mongoose from "mongoose"
-import dotenv from "dotenv";
-dotenv.config(); 
-const URI = process.env.mongo_url
 
 
-const dbConnect=async()=>{
+
+
+const dbConnect = async () => {
   try {
-   await mongoose.connect(URI)
-    console.log('db connected ')
+    await mongoose.connect(
+      'mongodb://user:password@developerapp-mongodb:27017/developerapp?authSource=admin'
+    );
+    console.log('db connected');
   } catch (error) {
-    process.exit(1)
-    console.log(error)
+    console.log(error);
+    process.exit(1);
   }
-}
+};
 
 export default dbConnect;
 

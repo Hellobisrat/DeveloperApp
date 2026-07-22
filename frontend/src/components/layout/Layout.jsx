@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="flex flex-col min-h-screen bg-gray-50">
       <Navbar />
 
-      <div className="flex flex-1">
+      <div className="flex flex-1 z-999">
         {/* Interactive Sidebar */}
         <div className="group fixed left-0 top-0 h-full w-20 hover:w-64 transition-all duration-300 bg-white shadow-xl border-r border-purple-100 flex flex-col py-6">
           <Sidebar />

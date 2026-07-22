@@ -28,7 +28,7 @@ export default function AppRoutes() {
         }
       >
         <Route index element={<Home />} />
-        <Route path="post" element={<Post />} />
+        <Route path="/post" element={<Post />} />
         <Route path="edit/:id" element={<Edit />} />
       </Route>
     </Routes>

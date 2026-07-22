@@ -18,7 +18,7 @@ export const registerUser = async (req, res) => {
     });
 
     res.json({
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { id: user._id, name: user.name, email: user.email, role:user.role },
       token: generateToken(user._id)
     });
   } catch (error) {
@@ -37,7 +37,7 @@ export const loginUser = async (req, res) => {
     if (!match) return res.status(400).json({ message: "Invalid credentials" });
 
     res.json({
-      user: { id: user._id, name: user.name, email: user.email },
+      user: { id: user._id, name: user.name, email: user.email, role: user.role },
       token: generateToken(user._id)
     });
   } catch (error) {
