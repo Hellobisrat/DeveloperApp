@@ -21,7 +21,7 @@ const Navbar = () => {
       <div className="flex items-center justify-between px-4 py-3 md:px-6 max-w-7xl mx-auto">
         
         {/* Logo */}
-        <div className="flex items-center gap-2 cursor-pointer group">
+        <div className="flex items-center  gap-2 cursor-pointer group">
           <div
             className="relative w-10 h-10 flex items-center justify-center rounded-xl
             bg-purple-400 shadow-lg group-hover:shadow-purple-500/50
