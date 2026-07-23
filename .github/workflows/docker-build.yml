@@ -16,12 +16,15 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
 
+      - name: Build root image
+        run: docker build -t developerapp:latest .
+
       - name: Build backend image
         run: docker build ./backend -t developerapp-backend:latest
-      
+
       - name: Build frontend image
         run: docker build ./frontend -t developerapp-frontend:latest
-      
+
       - name: Install docker-compose
         run: sudo apt-get install docker-compose-plugin
 
