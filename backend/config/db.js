@@ -8,9 +8,11 @@ const dbConnect = async () => {
     console.log('db connected');
   } catch (error) {
     console.log(error);
+    process.exit(1);
   }
 };
 
 export default dbConnect;
+
 
 
