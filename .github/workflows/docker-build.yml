@@ -22,8 +22,8 @@ jobs:
       - name: Build frontend image
         run: docker build ./frontend -t developerapp-frontend:latest
 
-      - name: Install docker-compose
-        run: sudo apt-get install docker-compose-plugin
+      - name: Check docker compose version
+        run: docker compose version
 
       - name: Build compose stack
         run: docker compose build
