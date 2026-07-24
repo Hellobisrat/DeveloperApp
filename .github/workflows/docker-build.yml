@@ -17,10 +17,10 @@ jobs:
         uses: docker/setup-buildx-action@v3
 
       - name: Build backend image
-        run: docker build ./backend -t developerapp-backend:latest
+        run: docker build ./backend -t bisrat1/developerapp-backend:latest
 
       - name: Build frontend image
-        run: docker build ./frontend -t developerapp-frontend:latest
+        run: docker build ./frontend -t bisrat1/developerapp-frontend:latest
 
       - name: Check docker compose version
         run: docker compose version
@@ -36,4 +36,3 @@ jobs:
 
       - name: Push frontend image
         run: docker push bisrat1/developerapp-frontend:latest
-
