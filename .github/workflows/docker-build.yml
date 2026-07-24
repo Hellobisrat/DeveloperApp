@@ -27,3 +27,13 @@ jobs:
 
       - name: Build compose stack
         run: docker compose build
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Push backend image
+        run: docker push bisrat1/developerapp-backend:latest
+
+      - name: Push frontend image
+        run: docker push bisrat1/developerapp-frontend:latest
+
