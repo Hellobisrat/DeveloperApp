@@ -1,9 +1,15 @@
-FROM node:20
+FROM node:20 AS builder
 
 WORKDIR /app
 COPY package*.json ./ 
-RUN npm install
+RUN npm install --production=false
 COPY . . 
-COPY .env.example .env
+
+FROM node:20-slim As production
+WORKDIR /app
+COPY package*.json ./
+RUN npm install --production
+COPY --from=builder /app .
+
 EXPOSE 9000
 CMD [ "npm","start" ]
