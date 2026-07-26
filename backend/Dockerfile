@@ -37,3 +37,4 @@ COPY --from=builder /app/middleware ./middleware
 
 EXPOSE 9000
 CMD ["npm", "start"]
+
