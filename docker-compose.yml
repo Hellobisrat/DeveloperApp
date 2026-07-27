@@ -33,6 +33,19 @@ services:
     networks:
       - develnet
 
+  nginx:
+    image: nginx:alpine
+    container_name: developerapp-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - frontend
+      - backend
+    networks:
+      - develnet
+
 networks:
   develnet:
     driver: bridge
