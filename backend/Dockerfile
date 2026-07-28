@@ -34,7 +34,7 @@ COPY --from=builder /app/routes ./routes
 COPY --from=builder /app/config ./config
 COPY --from=builder /app/utils ./utils
 COPY --from=builder /app/middleware ./middleware
-COPY --from=builder /app/.env ./.env
+
 
 EXPOSE 9000
 CMD ["npm", "start"]
