@@ -40,7 +40,6 @@ app.get('/',(req,res)=>{
 // db connect
 connectDB();
 
-app.listen(PORT,()=>{
-console.log(`app start listening at http://localhost:${PORT}`)
-
-})
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`app start listening at http://0.0.0.0:${PORT}`);
+});
