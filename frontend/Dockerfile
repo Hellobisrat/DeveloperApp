@@ -4,8 +4,7 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Copy .env BEFORE npm install and build
-COPY .env ./
+
 
 RUN npm install
 
